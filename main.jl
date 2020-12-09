@@ -74,7 +74,7 @@ scatter(x2,z2, c=:blue, ms=3, leg=false)
 plot!(modelo, c=:red, lw=2, xlim = (2009,2050))
 title!("R2 = $R2")
 
-F = [x->1, x->x]            # Mínimos quadrados para População X Consumo
+F = [x->1, x->x]            # Modelo para  População X Consumo (Reta)
 
 β, modelo = regressao(w, y, F)
 y_pred = modelo.(w)
