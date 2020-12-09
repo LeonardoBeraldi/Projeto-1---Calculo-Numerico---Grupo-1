@@ -10,6 +10,10 @@ y = [80300000, 83329500, 86285000, 89582710, 90906000, 91291000, 92855000, 92465
      108479780, 110984100, 106830880, 107527420]
 z = [89.45, 99.1, 99.28, 93.48, 94.9, 90.05, 99.6, 101.49, 97.41, 90.58, 92.77, 53.72] #Porcentagem reservatórios
 
+w = [1507007, 1547166, 1592060, 1584232, 1678461, 1628093, 1642772, 1694185, 1721943,
+     1748068, 1772946, 1796477, 1839133, 1751907, 1764541, 1776761, 1848946, 1864416,  # População Curitiba entre 1996 e 2016
+     1879168, 1893997]
+
 function regressao(x, y, F)         #regressão que será utilizada
     n, p = length(x), length(F)
     M = zeros(p, p)
@@ -68,4 +72,15 @@ R2 = 1 - norm(y_pred - z2)^2 / norm(y_med .- z2)^2
 
 scatter(x2,z2, c=:blue, ms=3, leg=false) 
 plot!(modelo, c=:red, lw=2, xlim = (2009,2050))
+title!("R2 = $R2")
+
+F = [x->1, x->x]            # Mínimos quadrados para População X Consumo
+
+β, modelo = regressao(w, y, F)
+y_pred = modelo.(w)
+y_med = mean(y)
+R2 = 1 - norm(y_pred - y)^2 / norm(y_med .- y)^2
+
+scatter(w, y, c=:blue, ms=3, leg=false) 
+plot!(modelo, c=:red, lw=2, xlim = (1600000,1900000))
 title!("R2 = $R2")
