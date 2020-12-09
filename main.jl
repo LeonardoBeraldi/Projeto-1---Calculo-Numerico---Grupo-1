@@ -57,7 +57,7 @@ y_med = mean(z)
 R2 = 1 - norm(y_pred - z)^2 / norm(y_med .- z)^2
 
 scatter(x1,z, c=:blue, ms=3, leg=false) 
-plot!(modelo, c=:red, lw=2, xlim = (2009,2050))
+plot!(modelo, c=:red, lw=2, xlim = (2009,2020))
 title!("R2 = $R2")
 
 x2, z2 = x1[1:11], z[1:11]
