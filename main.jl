@@ -47,7 +47,9 @@ scatter(x, y, c=:blue, ms=3, leg=false)
 plot!(modelo, c=:red, lw=2, xlim = (1996,2020))
 title!("R2 = $R2")
 
-F = [x -> 1, x-> x^2, x-> sin(2π/4*x), x->cos(2π/3*x), x-> sin(2π/6*x), x->cos(2π/6*x), x-> exp(x/1000), x-> exp(-x/10)]  #Modelo que descreve Anos X %Reservatórios
+F = [x -> 1, x-> x^2, x-> x^3, x-> sin(2π/4*x), x->cos(2π/4*x), x-> sin(2π/5*x), x->cos(2π/5*x), 
+    x-> sin(2π/3*x), x->cos(2π/3*x), x-> sin(2π/7*x), x->cos(2π/7*x)]  #Modelo que descreve Anos X %Reservatórios 
+                                                                   #(Encontramos com R2 melhor mas que não descrevia bem)
 
 solucao, modelo = regressao(x1, z, F)
 y_pred = modelo.(x1)
@@ -55,7 +57,7 @@ y_med = mean(z)
 R2 = 1 - norm(y_pred - z)^2 / norm(y_med .- z)^2
 
 scatter(x1,z, c=:blue, ms=3, leg=false) 
-plot!(modelo, c=:red, lw=2, xlim = (2009,2020))
+plot!(modelo, c=:red, lw=2, xlim = (2009,2050))
 title!("R2 = $R2")
 
 x2, z2 = x1[1:11], z[1:11]
@@ -65,5 +67,5 @@ y_med = mean(z2)
 R2 = 1 - norm(y_pred - z2)^2 / norm(y_med .- z2)^2
 
 scatter(x2,z2, c=:blue, ms=3, leg=false) 
-plot!(modelo, c=:red, lw=2, xlim = (2009,2020))
+plot!(modelo, c=:red, lw=2, xlim = (2009,2050))
 title!("R2 = $R2")
