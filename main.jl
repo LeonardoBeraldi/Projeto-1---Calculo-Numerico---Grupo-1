@@ -89,7 +89,7 @@ scatter(w, y, c=:blue, ms=3, leg=false)
 plot!(modelo, c=:red, lw=2, xlim = (1600000,1900000))
 title!("R2 = $R2")
    
-a = 1:16                                                            # Modelo Meses X Reservatório
+a = 1:16                                                            # Modelo Meses (Julho de 2019 a Outubro de 2020)  X Reservatório
 b = [99.25, 95.5, 95.5, 93.75, 95.5, 89, 83.75, 80.5, 81.75, 61.75, 50.75, 
      45.75, 40, 40, 34, 31]
 
