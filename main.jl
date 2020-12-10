@@ -86,6 +86,9 @@ y_pred = modelo.(w)
 y_med = mean(y)
 R2 = 1 - norm(y_pred - y)^2 / norm(y_med .- y)^2
 
+scatter(w, y, c=:blue, ms=3, leg=false) 
+plot!(modelo, c=:red, lw=2, xlabel="Qtd. da População", ylabel="Consumo de Água (litros)", xlim = (1502000,1907000))
+title!("R2 = $R2")
 
 F = [x->1, x->x, x-> sqrt(x), x->sin(2π/100000 * x), x->cos(2π/100000 * x)]  # Modelo para  População X Consumo que melhor se adapta
 
@@ -98,11 +101,7 @@ scatter(w, y, c=:blue, ms=3, leg=false)
 plot!(modelo, c=:red, lw=2, xlabel="Qtd. da População", ylabel="Consumo de Água (litros)", xlim = (1502000,1907000))
 title!("R2 = $R2")
 
-a = 1:16                                                            # Modelo Meses (Julho de 2019 a Outubro de 2020)  X %Reservatório
-b = [99.25, 95.5, 95.5, 93.75, 95.5, 89, 83.75, 80.5, 81.75, 61.75, 50.75, 
-     45.75, 40, 40, 34, 31]
-
-F = [x->1, x->x, x->x^2, x->cos(2π/11*x), x->sin(2π/11*x)]      
+F = [x->1, x->x, x->x^2, x->cos(2π/11*x), x->sin(2π/11*x)]      # Modelo Meses (Julho de 2019 a Outubro de 2020)  X %Reservatório
 
 β, modelo = regressao(a, b, F)
 y_pred = modelo.(a)
