@@ -14,6 +14,10 @@ w = [1507007, 1547166, 1592060, 1584232, 1678461, 1628093, 1642772, 1694185, 172
      1748068, 1772946, 1796477, 1839133, 1751907, 1764541, 1776761, 1848946, 1864416,  # População Curitiba entre 1996 e 2016
      1879168, 1893997]
 
+a = 1:16   #Meses de Julho de 2019 a Outubro de 2020
+b = [99.25, 95.5, 95.5, 93.75, 95.5, 89, 83.75, 80.5, 81.75, 61.75, 50.75,     #% Reservatórios entre Julho de 2019 e Outubro de 2020
+     45.75, 40, 40, 34, 31]
+
 function regressao(x, y, F)         #regressão que será utilizada
     n, p = length(x), length(F)
     M = zeros(p, p)
@@ -83,4 +87,19 @@ R2 = 1 - norm(y_pred - y)^2 / norm(y_med .- y)^2
 
 scatter(w, y, c=:blue, ms=3, leg=false) 
 plot!(modelo, c=:red, lw=2, xlim = (1600000,1900000))
+title!("R2 = $R2")
+   
+a = 1:16                                                            # Modelo Meses X Reservatório
+b = [99.25, 95.5, 95.5, 93.75, 95.5, 89, 83.75, 80.5, 81.75, 61.75, 50.75, 
+     45.75, 40, 40, 34, 31]
+
+F = [x->1, x->x, x->x^2]      
+
+β, modelo = regressao(a, b, F)
+y_pred = modelo.(a)
+y_med = mean(b)
+R2 = 1 - norm(y_pred - b)^2 / norm(y_med .- b)^2
+
+scatter(a, b, c=:blue, ms=3, leg=false) 
+plot!(modelo, c=:red, lw=2, xlim = (0,18))
 title!("R2 = $R2")
