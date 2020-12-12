@@ -109,6 +109,6 @@ y_med = mean(b)
 R2 = 1 - norm(y_pred - b)^2 / norm(y_med .- b)^2
 
 scatter(a, b, c=:blue, ms=3, leg=false) 
-plot!(modelo, c=:red, xlabel="Qtd. de Chuva (07/2019 - 10/2020)",
+plot!(modelo, c=:red, xlabel="07/2019 - 10/2020",
     ylabel = "Qtd. de Água nos Reservatórios (%)", lw=2, xlim = (0,17))
 title!("R2 = $R2")
