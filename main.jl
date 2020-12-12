@@ -41,7 +41,7 @@ y_med = mean(y)
 R2 = 1 - norm(y_pred - y)^2 / norm(y_med .- y)^2
 
 scatter(x, y, c=:blue, ms=3, leg=false)
-plot!(modelo, c=:red, lw=2, xlabel="Anos", ylabel="Qtd. Consumida", xlim = (1996,2020))
+plot!(modelo, c=:red, lw=2, xlabel="Anos", ylabel="Consumo de Água (m³)", xlim = (1996,2020))
 title!("R2 = $R2")
 
 F = [x->1, x -> x, x->-x^2, x->x^3, x-> sin(2π/12 *x), x->cos(2π/12*x)]   #Modelo que melhor descreve Anos X Consumo que encontramos
@@ -52,7 +52,7 @@ y_med = mean(y)
 R2 = 1 - norm(y_pred - y)^2 / norm(y_med .- y)^2
 
 scatter(x, y, c=:blue, ms=3, leg=false)
-plot!(modelo, c=:red, lw=2, xlabel="Anos", ylabel="Qtd. Consumida", xlim = (1996,2020))
+plot!(modelo, c=:red, lw=2, xlabel="Anos", ylabel="Consumo de Água (m³)", xlim = (1996,2020))
 title!("R2 = $R2")
 
 F = [x -> 1, x-> x^2, x-> x^3, x-> sin(2π/4*x), x->cos(2π/4*x), x-> sin(2π/5*x), x->cos(2π/5*x), 
@@ -87,7 +87,7 @@ y_med = mean(y)
 R2 = 1 - norm(y_pred - y)^2 / norm(y_med .- y)^2
 
 scatter(w, y, c=:blue, ms=3, leg=false) 
-plot!(modelo, c=:red, lw=2, xlabel="Qtd. da População", ylabel="Consumo de Água (litros)", xlim = (1502000,1907000))
+plot!(modelo, c=:red, lw=2, xlabel="Qtd. da População", ylabel="Consumo de Água (m³)", xlim = (1502000,1907000))
 title!("R2 = $R2")
 
 F = [x->1, x->x, x-> sqrt(x), x->sin(2π/100000 * x), x->cos(2π/100000 * x)]  # Modelo para  População X Consumo que melhor se adapta
@@ -98,7 +98,7 @@ y_med = mean(y)
 R2 = 1 - norm(y_pred - y)^2 / norm(y_med .- y)^2
 
 scatter(w, y, c=:blue, ms=3, leg=false) 
-plot!(modelo, c=:red, lw=2, xlabel="Qtd. da População", ylabel="Consumo de Água (litros)", xlim = (1502000,1907000))
+plot!(modelo, c=:red, lw=2, xlabel="Qtd. da População", ylabel="Consumo de Água (m³)", xlim = (1502000,1907000))
 title!("R2 = $R2")
 
 F = [x->1, x->x, x->x^2, x->cos(2π/11*x), x->sin(2π/11*x)]      # Modelo Meses (Julho de 2019 a Outubro de 2020)  X %Reservatório
